@@ -1,0 +1,27 @@
+# Simple C Wrapper for C++ Classes
+
+This project provides a simple example of wrapping C++ classes (Circle and Rectangle) with a C interface. The purpose of this project is purely educational, demonstrating how to use C++ classes in a C program through a C wrapper.
+
+## Files
+
+- `Circle.hpp`, `Circle.cpp`: Define and implement the Circle class in C++.
+- `Rectangle.hpp`, `Rectangle.cpp`: Define and implement the Rectangle class in C++.
+- `Shape.hpp`: Define the Shape interface class in C++.
+- `shape_wrapper.h`, `shape_wrapper.cpp`: Define and implement the C wrapper functions for Circle and Rectangle classes.
+- `main.c`: A simple C program demonstrating the usage of Circle and Rectangle classes through the C wrapper.
+
+## Compilation
+
+### Compile Shape Library
+
+g++ -c Circle.cpp Rectangle.cpp 
+ar rcs libshape.a Circle.o Rectangle.o
+
+### Compile wrapper Library
+
+g++ -c shape_wrapper.cpp 
+ar rcs libshape_wrapper.a shape_wrapper.o
+
+### Compile C program
+
+gcc main.c -o main.out -L. -lshape_wrapper -lshape -lstdc++ 
